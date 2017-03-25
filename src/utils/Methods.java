@@ -14,21 +14,21 @@ public class Methods {
      
     public int[] bubbleSort(int[] vetor){
 	int aux = 0;
+        int trocados[] = {};
 	for(int i = 0; i < vetor.length; i++){
 		for(int j = 0; j < (vetor.length - 1); j++){
 			if( vetor[j] > vetor[j + 1]){
-				aux = vetor[j];
-				vetor[j] = vetor[j+1];
-				vetor[j+1] = aux;
-                                
-//                            troca(vetor[j],vetor[j+1]);
+                            trocados = troca(vetor[j],vetor[j+1]);
+                            vetor[j] = trocados[0];
+                            vetor[j+1] = trocados[1];
 			}
 		}
 	}
         return vetor;
     }
-    public int[] agitacao(int[] vetor){
+    public List<Integer> agitacao(int[] vetor){
         int aux = 0;
+        List<Integer> numeros = new ArrayList<>();
 	for(int i = 0; i < vetor.length; i++){
 		for(int j = 0; j < (vetor.length - 1); j++){
 			if( vetor[j] > vetor[j + 1]){
@@ -39,21 +39,33 @@ public class Methods {
 		}
         }
         
-        return vetor;
+        for (int num : vetor){
+            numeros.add(num);
+        }
+        return numeros;
     }
-    public void troca(int numA, int numB){
+    public int[] troca(int numA, int numB){
+        int numeros[] = new int[2];
         int aux = 0;
         aux = numA;
         numA = numB;
         numB = aux;
+        numeros[0] = numA;
+        numeros[1] = numB;
+        return numeros;
     }
+    /**
+     * mostra vetor, utilizado em testes.
+     * @param vetor 
+     */
+    
     public void mostraVetor(int[] vetor){
         for(int i = 0; i < vetor.length; i++){
 		System.out.print(vetor[i] + " ");
 	}
         System.out.println("");
     }
-    public int[] geraVetor(int tamanhoVetor, int max){
+    public int[] geraVetorAleatorio(int tamanhoVetor, int max){
         /**
          * Gera uma lista organizada e depois mistura
          */
