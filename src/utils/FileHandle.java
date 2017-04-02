@@ -39,16 +39,18 @@ public class FileHandle {
     /**
      * Gravar arquivo com os valores
      * @param outputFileName nome do arquivo de saída
-     * @param numeros valores ordenados
+     * @param vetor valores ordenados
      * @param metodo nome do método utilizado na ordenação
      * @throws java.io.IOException 
      */
-    public void writeFile(String outputFileName, List numeros, String metodo) throws IOException{
+    public void writeFile(String outputFileName, List vetor, String metodo, String tempo) throws IOException{
         try (FileWriter out = new FileWriter(outputFileName)) {
-            out.write("Método utilizado: " + metodo + "\n");
-            for (Object num : numeros){
+            out.write("Método utilizado: " + metodo + "\nTempo de duração: " + tempo + "\n");
+            for (Object num : vetor){
                 out.write((String) num.toString() + "\n");
             }
+            
+            out.close();
         }
     }
 }
